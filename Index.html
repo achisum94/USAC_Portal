@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin Pro</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
+        <link href="styles.css" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous"></script>
+		<style>
+		
+		.App_Btn{
+			float: right;
+		}
+		
+		.vehicle_label{
+			font-weight: bold;
+		}
+		
+		.vehicle_update_btn{
+			float: right;
+		}
+		
+		.req_structure, .dec_structure{
+			padding: 6px ;
+		
+		}
+		
+		.itemization{
+			background: transparent; 
+			border: none; 
+			border-bottom: 1px solid #000000;
+		
+		}
+		
+		.itemization_btn{
+			float: right;
+		}
+		
+		.dlr_proceeds{
+			color:green; 
+			text-align: center;
+		}
+		
+		
+		</style>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+    </head>
+	
+    <body class="nav-fixed">
+        <nav class="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
+		
+            <!-- Sidenav Toggle Button-->
+            <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle"><i data-feather="menu"></i></button>
+			
+            <!-- Navbar Brand-->
+            <!-- * * Tip * * You can use text or an image for your navbar brand.-->
+            <!-- * * * * * * When using an image, we recommend the SVG format.-->
+            <!-- * * * * * * Dimensions: Maximum height: 32px, maximum width: 240px-->
+            <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="index.html">SB Admin Pro</a>
+            <!-- Navbar Search Input-->
+            <!-- * * Note: * * Visible only on and above the lg breakpoint-->
+            <form class="form-inline me-auto d-none d-lg-block me-3">
+                <div class="input-group input-group-joined input-group-solid">
+                    <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
+                    <div class="input-group-text"><i data-feather="search"></i></div>
+                </div>
+            </form>
+			
+            <!-- Navbar Items-->
+            <ul class="navbar-nav align-items-center ms-auto">
+                <!-- Documentation Dropdown-->
+                <li class="nav-item dropdown no-caret d-none d-md-block me-3">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="fw-500">Documentation</div>
+                        <i class="fas fa-chevron-right dropdown-arrow"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end py-0 me-sm-n15 me-lg-0 o-hidden animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                        <a class="dropdown-item py-3" href="https://docs.startbootstrap.com/sb-admin-pro" target="_blank">
+                            <div class="icon-stack bg-primary-soft text-primary me-4"><i data-feather="book"></i></div>
+                            <div>
+                                <div class="small text-gray-500">Documentation</div>
+                                Usage instructions and reference
+                            </div>
+                        </a>
+                        <div class="dropdown-divider m-0"></div>
+                        <a class="dropdown-item py-3" href="https://docs.startbootstrap.com/sb-admin-pro/components" target="_blank">
+                            <div class="icon-stack bg-primary-soft text-primary me-4"><i data-feather="code"></i></div>
+                            <div>
+                                <div class="small text-gray-500">Components</div>
+                                Code snippets and reference
+                            </div>
+                        </a>
+                        <div class="dropdown-divider m-0"></div>
+                        <a class="dropdown-item py-3" href="https://docs.startbootstrap.com/sb-admin-pro/changelog" target="_blank">
+                            <div class="icon-stack bg-primary-soft text-primary me-4"><i data-feather="file-text"></i></div>
+                            <div>
+                                <div class="small text-gray-500">Changelog</div>
+                                Updates and changes
+                            </div>
+                        </a>
+                    </div>
+                </li>
+				
+                <!-- Navbar Search Dropdown-->
+                <!-- * * Note: * * Visible only below the lg breakpoint-->
+                <li class="nav-item dropdown no-caret me-3 d-lg-none">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="search"></i></a>
+                    <!-- Dropdown - Search-->
+                    <div class="dropdown-menu dropdown-menu-end p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
+                        <form class="form-inline me-auto w-100">
+                            <div class="input-group input-group-joined input-group-solid">
+                                <input class="form-control pe-0" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                                <div class="input-group-text"><i data-feather="search"></i></div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+				
+                <!-- Alerts Dropdown-->
+                <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
+                        <h6 class="dropdown-header dropdown-notifications-header">
+                            <i class="me-2" data-feather="bell"></i>
+                            Alerts Center
+                        </h6>
+                        <!-- Example Alert 1-->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-details">December 29, 2021</div>
+                                <div class="dropdown-notifications-item-content-text">This is an alert message. It's nothing serious, but it requires your attention.</div>
+                            </div>
+                        </a>
+                        <!-- Example Alert 2-->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <div class="dropdown-notifications-item-icon bg-info"><i data-feather="bar-chart"></i></div>
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-details">December 22, 2021</div>
+                                <div class="dropdown-notifications-item-content-text">A new monthly report is ready. Click here to view!</div>
+                            </div>
+                        </a>
+                        <!-- Example Alert 3-->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <div class="dropdown-notifications-item-icon bg-danger"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-details">December 8, 2021</div>
+                                <div class="dropdown-notifications-item-content-text">Critical system failure, systems shutting down.</div>
+                            </div>
+                        </a>
+                        <!-- Example Alert 4-->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <div class="dropdown-notifications-item-icon bg-success"><i data-feather="user-plus"></i></div>
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-details">December 2, 2021</div>
+                                <div class="dropdown-notifications-item-content-text">New user request. Woody has requested access to the organization.</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
+                    </div>
+                </li>
+				
+                <!-- Messages Dropdown-->
+                <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
+                        <h6 class="dropdown-header dropdown-notifications-header">
+                            <i class="me-2" data-feather="mail"></i>
+                            Message Center
+                        </h6>
+                        <!-- Example Message 1  -->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-2.png" />
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                <div class="dropdown-notifications-item-content-details">Thomas Wilcox · 58m</div>
+                            </div>
+                        </a>
+                        <!-- Example Message 2-->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-3.png" />
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                <div class="dropdown-notifications-item-content-details">Emily Fowler · 2d</div>
+                            </div>
+                        </a>
+                        <!-- Example Message 3-->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-4.png" />
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                <div class="dropdown-notifications-item-content-details">Marshall Rosencrantz · 3d</div>
+                            </div>
+                        </a>
+                        <!-- Example Message 4-->
+                        <a class="dropdown-item dropdown-notifications-item" href="#!">
+                            <img class="dropdown-notifications-item-img" src="assets/img/illustrations/profiles/profile-5.png" />
+                            <div class="dropdown-notifications-item-content">
+                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                <div class="dropdown-notifications-item-content-details">Colby Newton · 3d</div>
+                            </div>
+                        </a>
+                        <!-- Footer Link-->
+                        <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
+                    </div>
+                </li>
+				
+                <!-- User Dropdown-->
+                <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="assets/img/illustrations/profiles/profile-1.png" /></a>
+                    <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                        <h6 class="dropdown-header d-flex align-items-center">
+                            <img class="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" />
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-details-name">Valerie Luna</div>
+                                <div class="dropdown-user-details-email">vluna@aol.com</div>
+                            </div>
+                        </h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#!">
+                            <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
+                            Account
+                        </a>
+                        <a class="dropdown-item" href="#!">
+                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+		
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sidenav shadow-right sidenav-light">
+                    <div class="sidenav-menu">
+                        <div class="nav accordion" id="accordionSidenav">
+
+
+                            <!-- Sidenav Menu Heading (Core)-->
+                            <div class="sidenav-menu-heading">Main</div>
+                            <!-- Sidenav Accordion (Dashboard)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
+                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                                Dashboard
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <!-- Sidenav Heading (Custom)-->
+                            <div class="sidenav-menu-heading">Queues</div>
+                            <!-- Sidenav Accordion (Pages)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                                Main Queue
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+
+                            <!-- Sidenav Accordion (Applications)-->
+                            <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#collapseApps" aria-expanded="false" aria-controls="collapseApps">
+                                <div class="nav-link-icon"><i data-feather="globe"></i></div>
+                                Funding Queue
+                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+						</div>
+					</nav>
+				</div>
+			
+			
+<div id="layoutSidenav_content">
+    <main>
+<!-- Main page content-->
+	<div class="container-xl  col-12 px-4 mt-4">
+		<div class="row">
+			<div class="col-xl-8">
+				<!-- Sub-Nav card-->
+                <div class="card mb-3">
+					<div class="card-body">
+					
+							<ul class="nav nav-pills" id="pills-tab" role="tablist">
+							  <li class="nav-item" role="presentation">
+								<button class="nav-link active" id="pills-applicant-tab" data-bs-toggle="pill" data-bs-target="#pills-applicant" type="button" role="tab" aria-controls="pills-applicant" aria-selected="true">Applicant</button>
+							  </li>
+							  <li class="nav-item" role="presentation">
+								<button class="nav-link" id="pills-vehicle-tab" data-bs-toggle="pill" data-bs-target="#pills-vehicle" type="button" role="tab" aria-controls="pills-vehicle" aria-selected="false">Vehicle</button>
+							  </li>
+							  <li class="nav-item" role="presentation">
+								<button class="nav-link" id="pills-structure-tab" data-bs-toggle="pill" data-bs-target="#pills-structure" type="button" role="tab" aria-controls="pills-structure" aria-selected="false">Structure</button>
+							  </li>
+							  <li class="nav-item" role="presentation">
+								<button class="nav-link" id="pills-comments-tab" data-bs-toggle="pill" data-bs-target="#pills-comments" type="button" role="tab" aria-controls="pills-comments" aria-selected="false">Comments</button>
+							  </li>
+							  <li class="nav-item" role="presentation">
+								<button class="nav-link" id="pills-documents-tab" data-bs-toggle="pill" data-bs-target="#pills-documents" type="button" role="tab" aria-controls="pills-documents" aria-selected="false">Documents</button>
+							  </li>
+							</ul>
+                     </div>
+                 </div>
+             </div>
+			 
+			<div class="col-xl-4">
+				<!-- Account details card-->
+                <div class="card mb-4">                                    
+					<div class="card h-100 border-start-lg border-start-success">
+						<div class="card-body">
+								<div class="h3 d-flex align-items-center">Status: Approved</div>
+								<div class="small text-muted">Application Number: 1000456789</div>
+								<div class="small text-muted">Program Qualification: MAC2</div>
+									<a class="text-arrow-icon small text-success" data-bs-toggle="modal" data-bs-target="#exampleModalXl" >See Call Back<i data-feather="arrow-right"></i></a>
+                                </div>
+                            </div>
+                     </div>
+			</div>
+			
+			<hr class="mt-0 mb-4" />
+			
+			<div class="tab-content" id="pills-tabContent">
+				<div class="tab-pane fade show active" id="pills-applicant" role="tabpanel" aria-labelledby="pills-applicant-tab">
+					<div class="row">
+						<div class="col-xl-6">
+						<!-- Account details card-->
+							<div class="card mb-4">
+								<div class="card-header">Applicant Info</div>
+								<div class="card-body">
+									<form>
+										<div class="row gx-3 mb-3">
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputFirstName">First name</label>
+												<input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+										   </div>
+										   <div class="col-md-6">
+												<label class="small mb-1" for="inputLastName">Last name</label>
+												<input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
+										  </div>
+										</div>                            
+										<div class="row gx-3 mb-3">
+											<div class="col-md-12">
+												<label class="small mb-1" for="inputAddr">Address</label>
+												<input class="form-control" id="inputAddr" type="text" placeholder="Enter your address" value="" />
+											</div>                                                
+										 </div>
+										 <div class="row gx-3 mb-3">                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputIncome">Primary Income</label>
+												<input class="form-control" id="inputIncome" placeholder="Enter your Monthly Income" value="" />
+											</div>                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputBirthday">Time on Job</label>
+												<input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Months at Employer" value="" />
+											</div>
+										 </div>
+										 <div class="row gx-3 mb-3">                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputIncome">Secondary Income</label>
+												<input class="form-control" id="inputIncome" placeholder="Enter your Monthly Income" value="" />
+											</div>                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputBirthday">Time on Job</label>
+												<input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Months at Employer" value="" />
+											</div>
+										 </div>
+								   </form>
+							   </div>
+							</div>
+						</div>
+						
+						<div class="col-xl-6">
+							<!-- Account details card-->
+							<div class="card mb-4">
+								<div class="card-header">Co-Applicant Info</div>
+								<div class="card-body">
+									<form>
+										<div class="row gx-3 mb-3">
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputFirstName">First name</label>
+												<input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" value="Valerie" />
+										   </div>
+										   <div class="col-md-6">
+												<label class="small mb-1" for="inputLastName">Last name</label>
+												<input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" value="Luna" />
+										  </div>
+										</div>                            
+										<div class="row gx-3 mb-3">
+											<div class="col-md-12">
+												<label class="small mb-1" for="inputAddr">Address</label>
+												<input class="form-control" id="inputAddr" type="text" placeholder="Enter your address" value="" />
+											</div>                                                
+										 </div>
+										 <div class="row gx-3 mb-3">                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputIncome">Primary Income</label>
+												<input class="form-control" id="inputIncome" placeholder="Enter your Monthly Income" value="" />
+											</div>                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputBirthday">Time on Job</label>
+												<input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Months at Employer" value="" />
+											</div>
+										 </div>
+										 <div class="row gx-3 mb-3">                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputIncome">Secondary Income</label>
+												<input class="form-control" id="inputIncome" placeholder="Enter your Monthly Income" value="" />
+											</div>                                                
+											<div class="col-md-6">
+												<label class="small mb-1" for="inputBirthday">Time on Job</label>
+												<input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Months at Employer" value="" />
+											</div>
+										 </div>
+									</form>
+									
+								</div>	
+								
+							</div>
+							<br>
+							<br>
+							<br>
+							<br>
+					<div>		
+						<button type="button" class="btn btn-primary App_Btn" >Update</button>
+					</div>	
+						</div>
+					</div>			
+							
+				</div>
+				<div class="tab-pane fade" id="pills-vehicle" role="tabpanel" aria-labelledby="pills-vehicle-tab">
+					<div class="row">
+						<div class="col-xl-6">
+						<!-- Account details card-->
+							<div class="card mb-4">
+								<div class="card-header">Current Vehicle</div>
+								<div class="card-body">
+									<form>
+										<div class="row gx-3 mb-3">
+											<div class="col-md-12">
+												<label class="large mb-1 vehicle_label" for="inputVin">Vin</label>
+												<p>5NPEC4AB3EH880240</p>
+										   </div>
+										   <div class="col-md-12">
+												<label  class="large mb-1 vehicle_label" for="inputMileage">Mileage</label>
+												<p>100,000</p>
+										  </div>
+											<div class="col-md-12">
+												<label  class="large  mb-1 vehicle_label" for="inputYear">Year</label>
+												<p>2010</p>
+											</div>                                                                                              
+											<div class="col-md-12">
+												<label  class="large  mb-1 vehicle_label" for="inputMake">Make</label>
+												<p>HYUNDAI</p>
+											</div>                                                
+											<div class="col-md-12">
+												<label  class="large  mb-1 vehicle_label" for="inputModel">Model</label>
+												<p>SONATA</p>
+											</div>                                                
+											<div class="col-md-12">
+												<label  class="large  mb-1 vehicle_label" for="inputTrim">Trim</label>
+												<p>SEDAN 4D SE 2.0L I4 TURBO</p>
+											</div>                                                
+										 </div>
+								   </form>
+							   </div>
+							</div>
+						</div>
+						<div class="col-xl-6">
+							<div class="card mb-4">
+								<div class="card-header">New Vehicle</div>
+								<div class="card-body">
+									<form>
+										<div class="row gx-3 mb-3">
+											<div class="col-md-12">
+												<label class="small mb-1" for="inputVin">Vin</label>
+												<input class="form-control" id="inputVin" type="text" placeholder="Vin #" />
+										   </div>
+										   <div class="col-md-12">
+												<label class="small mb-1" for="inputMileage">Mileage</label>
+												<input class="form-control" id="inputMileage" type="text" placeholder="Current Mileage" />
+										  </div>
+											<div class="col-md-12">
+												<label class="small mb-1" for="inputYear">Year</label>
+												<input class="form-control" id="inputYear" type="text" placeholder="Vehicle Year" />
+											</div>                                                                                              
+											<div class="col-md-12">
+												<label class="small mb-1" for="inputMake">Make</label>
+												<input class="form-control" id="inputMake" placeholder="Vehicle Make" />
+											</div>                                                
+											<div class="col-md-12">
+												<label class="small mb-1" for="inputModel">Model</label>
+												<input class="form-control" id="inputModel" type="text" placeholder="Vehicle Model" />
+											</div>                                                
+											<div class="col-md-12">
+												<label class="small mb-1" for="inputTrim">Trim</label>
+												<input class="form-control" id="inputTrim" placeholder="Vehicle Trim"  />
+											</div>                                                
+										 </div>
+										 <div>
+										 <button type="button" class="btn btn-primary vehicle_update_btn">Update</button>
+										 </div>
+								   </form>
+							   </div>
+							</div>
+						</div>
+                      </div>
+				</div>
+				<div class="tab-pane fade" id="pills-structure" role="tabpanel" aria-labelledby="pills-structure-tab">
+				            <div class="row">
+				<div class="col-md-8">
+                <!-- Account details card-->
+					<div class="card mb-4">
+						<div class="card-header">Deal Structure</div>
+                        <div class="card-body">
+						<form>
+						  <div class="form-group row">
+						  <h6 class="col-sm-6"><i  class="material-icons text-info  pr-2 mr-2 req_structure">Requested</i>Structure</h6>
+						  <h6 class="col-sm-6"><i  class="material-icons text-success  pr-2 mr-2 dec_structure">Decisioned</i>Structure</h6>
+						  </div>
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Sales Price</label>
+							<div class="col-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Sales Price</label>
+							<div class="col-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$12,500.00" readonly>
+							</div>
+						  </div>
+						  
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Estimated Sales Tax</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Estimated Sales Tax</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$500.00" readonly>
+							</div>
+						  </div>
+						  
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Estimated TTL</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Estimated TTL</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$50.00" readonly>
+							</div>
+						  </div>
+						  
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Cash Down Payment</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Cash Down Payment</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$500.00" readonly>
+							</div>
+						  </div>
+						  
+							<div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Trade In Credit</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Trade In Credit</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$0.00" readonly>
+							</div>
+						  </div>
+						  
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Max Advance</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Max Advance</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$12,550.00" readonly>
+							</div>
+						  </div>
+						  
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Max Back End Allowance</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Max Back End Allowance</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$0.00" readonly>
+							</div>
+						  </div>
+						  
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Gap</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Gap</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$695.00" readonly>
+							</div>
+						  </div>
+						  
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">FL Doc Stamp Tax</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">FL Doc Stamp Tax</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$0.00" readonly>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Amount Financed</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Amount Financed</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$13,245.00" readonly>
+							</div>
+						  </div>
+						  <hr>
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Term</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Term</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="48" readonly>
+							</div>
+						  </div>
+						 <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Rate</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Rate</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="28.00%" readonly>
+							</div>
+						  </div>
+						 <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Payment Frequency</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Payment Frequency</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="Bi-Weekly" readonly>
+							</div>
+						  </div>
+						  <div class="form-group row">
+							<label for="staticEmail" class="col-4 col-form-label">Payment</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext itemization" id="staticEmail" value="$">
+							</div>
+							<label for="staticSalesPrice" class="col-4 col-form-label">Payment</label>
+							<div class="col-sm-2">
+							  <input type="text" class="form-control-plaintext" id="staticSalesPrice" value="$350.00" readonly>
+							</div>
+							<div>
+							
+							</div>
+						  </div>
+						  <br>
+						  
+						  <button type="button" class="btn btn-success itemization_btn" >Submit</button>
+
+						</form>
+						
+                       </div>
+                    </div>
+                </div>
+				<div class="col-xl-4">
+                <!-- Account details card-->
+					<div class="card mb-4">
+						<div class="card-header">Vehicle Information</div>
+                        <div class="card-body">
+							<div class="row gx-3 mb-3">
+									<div class="col-md-6">
+										<label  class="large mb-1 vehicle_label" for="inputVin">Vin</label>
+                                        <p>5NPEC4AB3EH880240</p>
+                                   </div>
+                                   <div class="col-md-6">
+										<label  class="large mb-1 vehicle_label" for="inputMileage">Mileage</label>
+                                        <p>100,000</p>
+                                  </div>
+									<div class="col-md-6">
+										<label  class="large  mb-1 vehicle_label" for="inputYear">Year</label>
+										<p>2010</p>
+                                    </div>                                                                                              
+									<div class="col-md-6">
+										<label  class="large  mb-1 vehicle_label" for="inputMake">Make</label>
+										<p>HYUNDAI</p>
+                                    </div>                                                
+                                    <div class="col-md-6">
+										<label  class="large  mb-1 vehicle_label" for="inputModel">Model</label>
+                                        <p>SONATA</p>
+									</div>                                                
+									<div class="col-md-6">
+										<label  class="large  mb-1 vehicle_label" for="inputTrim">Trim</label>
+										<p>SEDAN 4D SE 2.0L I4 TURBO</p>
+                                    </div>                                                
+                                 </div>
+                       </div>
+                    </div>
+					<div class="card mb-4">
+						<div class="card-header">Dealer Proceeds</div>
+                        <div class="card-body">
+							<h1 class="dlr_proceeds">$11,245.00</h1>
+                       </div>
+                    </div>
+				<div class="card mb-4">
+						<div class="card-header">Stipulations</div>
+                        <div class="card-body">
+						<ul>
+							<li>Valid License / ID</li>
+							<li>POI</li>
+							<li>POR</li>
+							<li>Proof of Insurance</li>
+							<li>USAC Funding Docs Required</li>
+						</ul>
+						
+                       </div>
+                    </div>
+				<div class="card mb-4">
+						<div class="card-header">US Auto Credit Notes to Dealer</div>
+                        <div class="card-body">
+						<ul>
+							<li>Approval includes GAP coverage. If GAP is not elected, reduce finance amt by $499.00 and net check by $50.</li>
+							<li>Must Trade open auto with and show on contract</li>
+							<li>Increase your dealer proceeds to $8840 by submitting your deal electronically through Dealer Track Digital Contracting</li>
+						</ul>
+						
+                       </div>
+                    </div>
+					<div class="card mb-4">
+						<div class="card-header">Accept Structure</div>
+                        <div class="card-body">
+							<button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Accept</button>
+							<button data-bs-toggle="modal" data-bs-target="#structures" type="button" class="btn btn-info ">Review Previous Structures</button>							
+                       </div>
+                    </div>
+                </div>
+			</div>
+				
+				
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+			
+
+
+                    </div>
+					
+							<!--Accept_Decision Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalCenterTitle">Closing Packet</h5>
+							<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+					<div class="modal-body">Do you need the Closing Packet?</div>
+						<div class="modal-footer">
+							<button class="btn btn-danger" type="button" data-bs-dismiss="modal">No</button>
+                            <button class="btn btn-primary" type="button">Yes</button>
+                        </div>
+                     </div>
+                   </div>
+                 </div>		
+
+			<!-- Callback Modal -->					
+			<div class="modal fade" id="exampleModalXl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-xl" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Call Back</h5>
+							<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="table-responsive">
+								<p style="text-align:center"><span style="color:#0066cc"><span style="font-size:18px"><strong>U.S. AUTO CREDIT PURCHASING CENTER, LLC</strong></span></span></p>
+								<p style="text-align:center"><span style="color:#008000"><span style="font-size:20px"><strong>Approved</strong></span></span></p>
+								<table class=" table table-striped table-bordered " border="border-dark">
+									<tbody>
+										<tr>
+											<td colspan="2" rowspan="1" style="text-align:center"><h4><strong>Customer Information</strong></h4></td>
+											<td>&nbsp;</td>
+											<td colspan="2" rowspan="1" style="text-align:center"><h4><strong>Financing Information</strong></h4></td>
+										</tr>
+										<tr>
+											<td><h5>Applicant</h5></td>
+											<td><span style="font-size:14px">Applicant</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Max Advance</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">$12,550.00</span></td>
+										</tr>
+										<tr>
+											<td><h5>Co-Applicant, if any</h5></td>
+											<td><span style="font-size:14px">CoApplicant</span></td>
+											<td>&nbsp;</td>
+											<td><h5>GAP Protection</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">$675.00</span></td>
+										</tr>
+										<tr>
+											<td><h5>Application #</h5></td>
+											<td><span style="font-size:14px">1000123456</span></td>
+											<td>&nbsp;</td>
+											<td><h5>FL Doc Stamp Tax, if any</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">$&nbsp;0.00</span></td>
+										</tr>
+										<tr>
+											<td><h5>Application Date</h5></td>
+											<td><span style="font-size:14px">10/25/2022</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Total Amount Financed</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">$13,225.00</span></td>
+										</tr>
+										<tr>
+											<td><h5>Decision Date</h5></td>
+											<td><span style="font-size:14px">10/25/2022</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Discount/Lender Fee</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">$1,000.00</span></td>
+										</tr>
+										<tr>
+											<td><h5>Dealer</h5></td>
+											<td><span style="font-size:14px">Car Dealer, LLC</span></td>
+											<td>&nbsp;</td>
+											<td><h5 style="color:#008000"><strong>Dealer Proceeds</strong></h5></td>
+											<td style="text-align:right"><span style="color:#008000"><span style="font-size:14px"><strong>$12,225.00</strong></span></span></td>
+										</tr>
+										<tr>
+											<td><h5>USAC Branch</h5></td>
+											<td><span style="font-size:14px">Jacksonville, FL</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Payment Frequency</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">Monthly</span></td>
+										</tr>
+										<tr>
+											<td colspan="2" rowspan="1" style="text-align:center"><h4><strong>Vehicle Information</strong></h4></td>
+											<td>&nbsp;</td>
+											<td><h5>Maximum # of Payments</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">54</span></td>
+										</tr>
+										<tr>
+											<td><h5>New/Used</h5></td>
+											<td><span style="font-size:14px">2010</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Maximum Payment</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">$ 495.00</span></td>
+										</tr>
+										<tr>
+											<td><h5>Make</h5></td>
+											<td><span style="font-size:14px">Honda</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Minimum Down Payment</h5></td>
+											<td style="text-align:right"><span style="font-size:14px">$500</span></td>
+										</tr>
+										<tr>
+											<td><h5>Model</h5></td>
+											<td><span style="font-size:14px">Accord</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Net Trade In</h5></td>
+											<td rowspan="1" style="text-align:right"><span style="font-size:14px">$0.00</span></td>
+										</tr>
+										<tr>
+											<td><h5>Trim</h5></td>
+											<td><span style="font-size:12px">SE</span></td>
+											<td>&nbsp;</td>
+											<td><h5>Rate</h5></td>
+											<td rowspan="1" style="text-align:right"><span style="font-size:14px">28.00%</span></td>
+										</tr>
+										<tr>
+											<td><h5>VIN #</h5></td>
+											<td><span style="font-size:14px">14a6b7ec37595</span></td>
+											<td>&nbsp;</td>
+											<td>&nbsp;</td>
+											<td style="text-align:right">&nbsp;</td>
+										</tr>
+										<tr>
+											<td><h5>Mileage</h5></td>
+											<td><span style="font-size:14px">100,000</span></td>
+											<td>&nbsp;</td>
+											<td><h5 style="color:#8b4513">Analyst</h5></td>
+											<td style="text-align:right"><span style="color:#8b4513"><span style="font-size:14px">Andrew &nbsp; Chisum</span></span></td>
+										</tr>
+								</tbody>
+							</table>
+							<p style="text-align:center"><span style="font-size:20px"><strong><span style="color:#ff0000">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;REMINDERS</span></strong>: &nbsp;</span></p>
+							
+							<ul>
+								<li style="text-align:center"><span style="font-size:18px">Title and assignment section of the retail installment contract must refer&nbsp;to <strong><span style="color:#0000ff">U.S. Auto Credit Purchasing Center, LLC</span>.</strong></span></li>
+								<li style="text-align:center"><span style="font-size:18px">All lienholder information should be addressed to&nbsp;</span><strong><span style="font-size:18px"><span style="color:#0000ff">P.O. Box 57545, Jacksonville, FL, &nbsp;32241</span>.</span></strong></li>
+								<li style="text-align:center"><span style="font-size:18px">Please send all closing documents to&nbsp;<strong><span style="color:#0000ff">8120 Nations Way, STE 208,&nbsp;Jacksonville, FL &nbsp;32256</span>.&nbsp;</strong></span></li>
+							</ul>
+
+							<p style="text-align:center"><span style="font-size:18px">The following is a list of our ELT # for those of you in an ELT state:</span></p>
+
+							<table align="center" class="table table-bordered">
+								<tbody>
+									<tr>
+										<td style="text-align:center"><span style="font-size:18px">Florida: 232767767</span></td>
+										<td style="text-align:center"><span style="font-size:18px">North Carolina: 41401159</span></td>
+										<td style="text-align:center"><span style="font-size:18px">Virginia: ACP01</span></td>
+										<td style="text-align:center"><span style="font-size:18px">Ohio: E09100</span></td>
+									</tr>
+									<tr>
+										<td style="text-align:center"><span style="font-size:18px">Georgia: 1106989358</span></td>
+										<td style="text-align:center"><span style="font-size:18px">South Carolina: 34127734</span></td>
+										<td style="text-align:center"><span style="font-size:18px">Maryland: 6781</span></td>
+										<td style="text-align:center"><span style="font-size:18px">Texas: 27364763300&nbsp;</span></td>
+									</tr>
+								</tbody>
+							</table>
+
+							<p>&nbsp;</p>
+
+							<table align="center" class="table table-bordered">
+								<tbody>
+									<tr>
+										<td scope="col" style="text-align:center"><h5>Stipulations</h5></td>
+									</tr>
+									<tr>
+										<td><span style="font-size:14px"></span>Valid License / ID</td>
+									</tr>
+									<tr>
+										<td><span style="font-size:14px"></span>POI</td>
+									</tr>
+									<tr>
+										<td><span style="font-size:14px"></span>POR</td>
+									</tr>
+									<tr>
+										<td><span style="font-size:14px"></span>Proof of Insurance</td>
+									</tr>
+									<tr>
+										<td><span style="font-size:14px"></span>USAC Funding Docs Required</td>
+									</tr>
+									<tr>
+										<td><span style="font-size:14px"></span>References</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<p>&nbsp;</p>
+
+							<p>&nbsp;</p>
+
+							<p>&nbsp;</p>
+
+							<table align="center" class="table table-bordered">
+								<tbody>
+									<tr>
+										<td scope="col" style="text-align:center"><span style="font-size:12px">U.S. Auto Credit Notes to Dealer</span></td>
+									</tr>
+									<tr>
+										<td>
+											<p><span style="font-size:12px">Let me know if you can make this work or if you have an other unit that may work better. Thank you!</span></p>
+											<p><span style="font-size:14px"><strong>Increase your dealer proceeds to </strong></span><strong><span style="color:#008000"><span style="font-size:12px">$ {{Custom Fields.Dealer Advance w/ Digital Contract Incentive}}</span></span></strong><span style="font-size:14px"><strong>&nbsp;by submitting your deal electronically through Dealer Track Digital Contracting.</strong></span></p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<p>&nbsp;</p>
+
+							<p>&nbsp;</p>
+
+							<p>&nbsp;</p>
+
+							<div>&nbsp;</div>
+
+						<div>
+						<table align="center" class="table table-bordered">
+							<tbody>
+								<tr>
+									<td><span style="font-size:12px">Underwriting Phone #</span></td>
+									<td><span style="font-size:12px">877-280-9267</span></td>
+								</tr>
+								<tr>
+									<td><span style="font-size:12px">FAX YOUR LOAN PACKET to</span></td>
+									<td><span style="font-size:12px">888-769-3390</span></td>
+								</tr>
+							</tbody>
+						</table>				
+					</div>
+				</div>
+				<div class="modal-footer">							
+					<button class="btn btn-primary " type="button" data-bs-dismiss="modal">Print</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Previous Structures modal -->                                                   												
+<div class="modal fade" id="structures" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Previous Structures</h5>
+				<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>			
+			<div class="modal-body">
+				<div class="table-responsive" style="max-height: 350px; overflow: auto;" >
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Date/Time</th>
+								<th scope="col">Vehicle</th>
+								<th scope="col">Payment Amount</th>
+								<th scope="col">Net Check</th>
+								<th scope="col">Update</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>10/31/2022 10:12am</td>
+								<td>2010 Honda Accord</td>
+								<td>$435.01</td>
+								<td>$12,225.00</td>
+								<td><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Update</button></td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>10/31/2022 10:12am</td>
+								<td>2010 Honda Accord</td>
+								<td>$435.01</td>
+								<td>$12,225.00</td>
+								<td><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Update</button></td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>10/31/2022 10:12am</td>
+								<td>2010 Honda Accord</td>
+								<td>$435.01</td>
+								<td>$12,225.00</td>
+								<td><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Update</button></td>
+							</tr>
+							<tr>
+								<th scope="row">4</th>
+								<td>10/31/2022 10:12am</td>
+								<td>2010 Honda Accord</td>
+								<td>$435.01</td>
+								<td>$12,225.00</td>
+								<td><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Update</button></td>
+							</tr>
+							<tr>
+								<th scope="row">5</th>
+								<td>10/31/2022 10:12am</td>
+								<td>2010 Honda Accord</td>
+								<td>$435.01</td>
+								<td>$12,225.00</td>
+								<td><button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Update</button></td>
+							</tr>												
+						</tbody>
+					</table>
+				</div>																																																															
+			</div>
+			<div class="modal-footer"><button class="btn btn-primary" type="button" data-bs-dismiss="modal">Close</button></div>
+		</div>
+	</div>
+</div>
+
+</main>
+
+
+      <footer class="footer-admin mt-auto footer-light">
+		<div class="container-xl px-4">
+			<div class="row">
+				<div class="col-md-6 small">Copyright &copy; Your Website 2021</div>
+					<div class="col-md-6 text-md-end small">
+						<a href="#!">Privacy Policy</a>
+							&middot;
+                         <a href="#!">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+             </div>
+      </footer>
+  </div>
+</div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="chart-area-demo.js"></script>
+        <script src="chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="datatables-simple-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
+        <script src="litepicker.js"></script>
+    </body>
+</html>
